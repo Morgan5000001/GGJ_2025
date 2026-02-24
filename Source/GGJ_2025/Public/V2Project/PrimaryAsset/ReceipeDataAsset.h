@@ -7,15 +7,15 @@
 #include "Engine/DataAsset.h"
 #include "ReceipeDataAsset.generated.h"
 
-USTRUCT(BlueprintType)
-struct FRecipeInput
+USTRUCT(BlueprintType, Blueprintable)
+struct FRessource
 {
 	GENERATED_BODY()
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	URessourceDataAsset* Resource;
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	int32 Quantity;
 };
 
@@ -27,15 +27,30 @@ class URecipeDataAsset : public UPrimaryDataAsset
 public:
 
 	UPROPERTY(EditDefaultsOnly)
-	TArray<FRecipeInput> Inputs;
+	TArray<FRessource> Inputs;
 
 	UPROPERTY(EditDefaultsOnly)
-	FRecipeInput Output;
+	FRessource Output;
 
 	UPROPERTY(EditDefaultsOnly)
 	float ProductionTime;
 
 	// UPROPERTY(EditDefaultsOnly)
 	// TSubclassOf<class AMachineBase> RequiredMachineClass;
+	
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	TArray<FRessource> GetInputs();
+	
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	FRessource GetRessourceOut();
+	
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	bool ContainsItem(URessourceDataAsset* ResourceInside);
+	
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	bool ContainsAllItems(TArray<URessourceDataAsset*> AllRessourceInside);
+	
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	bool CanCraft(const TMap<URessourceDataAsset*, int32>& AvailableResources) const;
 };
 

@@ -26,4 +26,8 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UMaterialInterface* Icon;
+	
+	
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	UMaterialInterface* GetIcon();
 };
