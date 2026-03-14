@@ -3,6 +3,11 @@
 
 #include "V2Project/PrimaryAsset/BuildableDataAsset.h"
 
+FPrimaryAssetId UBuildableDataAsset::GetPrimaryAssetId() const
+{
+	return FPrimaryAssetId("Builds", GetFName());
+}
+
 FGameplayTag& UBuildableDataAsset::GetTag()
 {
 	return Tag;

@@ -15,8 +15,10 @@ UCLASS()
 class GGJ_2025_API UBuildableDataAsset : public UPrimaryDataAsset
 {
 	GENERATED_BODY()
-    	
+
 public:
+	virtual FPrimaryAssetId GetPrimaryAssetId() const override;
+	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	FGameplayTag Tag;
 	
