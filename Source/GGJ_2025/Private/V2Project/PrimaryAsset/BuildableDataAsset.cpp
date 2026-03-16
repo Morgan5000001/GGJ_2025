@@ -18,6 +18,11 @@ UStaticMesh* UBuildableDataAsset::GetMesh()
 	return Mesh;
 }
 
+UMaterialInterface* UBuildableDataAsset::GetMaterial()
+{
+	return Material;
+}
+
 TEnumAsByte<ETraceTypeQuery> UBuildableDataAsset::GetTraceType()
 {
 	return TraceType;

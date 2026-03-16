@@ -26,6 +26,9 @@ public:
 	UStaticMesh* Mesh;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UMaterialInterface* Material;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TEnumAsByte<ETraceTypeQuery> TraceType;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
@@ -38,6 +41,9 @@ public:
 	
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	UStaticMesh* GetMesh();
+	
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	UMaterialInterface* GetMaterial();
 	
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	TEnumAsByte<ETraceTypeQuery> GetTraceType();
